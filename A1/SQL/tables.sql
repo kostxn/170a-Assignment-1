@@ -182,3 +182,11 @@ CREATE TABLE field_conference (
 	field TEXT,
     conference TEXT PRIMARY KEY
 );
+
+
+/*Cleaning csrankings sql*/
+ALTER TABLE csrankings
+ADD COLUMN clean_author_name TEXT;
+
+UPDATE csrankings
+SET clean_author_name = REGEXP_REPLACE(name, ' [0-9]+$', '');
